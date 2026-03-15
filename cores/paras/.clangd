@@ -2,17 +2,14 @@ CompileFlags:
   Add:
     - "-ferror-limit=0"
     
-    # --- THE FIX ---
-    # Teach Clang the SDCC keywords found in your new header
     - "-D__sfr=volatile unsigned char"
     - "-D__sbit=volatile unsigned char"
     - "-D__at(x)=" 
+    - "-D__code=" 
     
-    # Keep your old definitions (useful if you include other SDCC headers)
     - "-Dsfr=volatile unsigned char"
     - "-Dsbit=volatile unsigned char"
     
-    # Standard flags
     - "-D_SDCC"
     - "-D__SDCC__"
     - "-I/usr/share/sdcc/include"

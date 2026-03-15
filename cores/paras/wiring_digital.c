@@ -1,41 +1,18 @@
 #include "Arduino.h"
+#include "N76E003.h"
 
 void pinMode(uint8_t pin, uint8_t mode) {
-  // --- Handle Port 0 (Pins 0-7) ---
+  if (pin >= NUM_DIGITAL_PINS)
+    return;
+
+  uint8_t bitmask = (1 << (pin > 7 ? pin - 8 : pin));
+
   if (pin < 8) {
-    uint8_t bitmask = (1 << pin);
-
-    if (mode == OUTPUT) {
-      // Push-Pull: M1=0, M2=1
-      P0M1 &= ~bitmask;
-      P0M2 |= bitmask;
-    } else if (mode == INPUT) {
-      // Input (High-Impedance): M1=1, M2=0
-      P0M1 |= bitmask;
-      P0M2 &= ~bitmask;
-    } else { // INPUT_PULLUP (Quasi-Bidirectional)
-      // Quasi: M1=0, M2=0
-      P0M1 &= ~bitmask;
-      P0M2 &= ~bitmask;
-      // Optionally write 1 to enable the weak pull-up
-      P0 |= bitmask;
-    }
-  }
-  // --- Handle Port 1 (Pins 8-15) ---
-  else if (pin >= 8 && pin <= 15) {
-    uint8_t bitmask = (1 << (pin - 8)); // Shift by 0-7
-
-    if (mode == OUTPUT) {
-      P1M1 &= ~bitmask;
-      P1M2 |= bitmask;
-    } else if (mode == INPUT) {
-      P1M1 |= bitmask;
-      P1M2 &= ~bitmask;
-    } else { // INPUT_PULLUP
-      P1M1 &= ~bitmask;
-      P1M2 &= ~bitmask;
-      P1 |= bitmask;
-    }
+    (mode & 0b10) ? (P0M1 |= bitmask) : (P0M1 &= ~bitmask);
+    (mode & 0b01) ? (P0M2 |= bitmask) : (P0M2 &= ~bitmask);
+  } else {
+    (mode & 0b10) ? (P1M1 |= bitmask) : (P1M1 &= ~bitmask);
+    (mode & 0b01) ? (P1M2 |= bitmask) : (P1M2 &= ~bitmask);
   }
 }
 
