@@ -24,11 +24,6 @@ enum {
 // TODO: move to pins_arduino.h
 #define NUM_DIGITAL_PINS 16
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void init_timers(void);
 void setup(void);
 void loop(void);
 
@@ -37,8 +32,5 @@ void digitalWrite(uint8_t pin, uint8_t val);
 int digitalRead(uint8_t pin);
 
 void delay(unsigned long ms);
-#ifdef __cplusplus
-}
-#endif
 
 #endif

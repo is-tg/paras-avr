@@ -20,3 +20,4 @@ Diagnostics:
     - "misc-definitions-in-headers"
     - "init_element_not_constant"
     - "clang-diagnostic-unknown-typename"
+    - "unused-includes"
