@@ -1,0 +1,15 @@
+paras.name=Paras N76E003
+paras.build.mcu=mcs51
+paras.build.f_cpu=16000000L
+paras.build.core=paras
+paras.build.board=N76E003
+paras.build.arch=MCS51
+paras.build.variant=standard
+
+paras.upload.tool=nvtispflash
+paras.upload.tool.serial=nvtispflash
+paras.upload.protocol=uart
+paras.upload.maximum_size=14336
+paras.upload.maximum_data_size=1024
+paras.upload.use_1200bps_touch=false
+paras.upload.wait_for_upload_port=false

@@ -1,0 +1,46 @@
+name=Paras N76E003
+version=1.0.0
+
+# Toolchain
+compiler.path=/usr/bin/
+compiler.sdcc.cmd=sdcc
+compiler.sdar.cmd=sdar
+compiler.object_file_extension=rel
+compiler.ar_file_extension=lib
+
+# Compiler flags shared
+compiler.sdcc.flags=-mmcs51 --model-small --iram-size 256 --xram-size 0 --code-size 16384 --disable-warning 283 --disable-warning 126 --disable-warning 110
+
+# Preprocessor
+recipe.preproc.includes="{compiler.path}{compiler.sdcc.cmd}" -mmcs51 -I{build.core.path} -I{build.variant.path} -x c -E "{source_file}" -o "{preprocessed_file}"
+
+# Compile C
+recipe.c.o.pattern="{compiler.path}{compiler.sdcc.cmd}" {compiler.sdcc.flags} -DF_CPU={build.f_cpu} -I{build.core.path} -I{build.variant.path} -x c -c "{source_file}" -o "{object_file}"
+
+# Compile C++ (sketch .ino becomes .cpp — force treated as C)
+recipe.cpp.o.pattern="{compiler.path}{compiler.sdcc.cmd}" {compiler.sdcc.flags} -DF_CPU={build.f_cpu} -I{build.core.path} -I{build.variant.path} -x c -c "{source_file}" -o "{object_file}"
+
+# Compile ASM
+recipe.S.o.pattern="{compiler.path}{compiler.sdcc.cmd}" -mmcs51 -c "{source_file}" -o "{object_file}"
+
+# Don't archive — just collect object files for direct linking
+recipe.ar.pattern=/usr/local/bin/sdcc-ar "{archive_file_path}" "{object_file}"
+
+# Link using the collected .rel list
+recipe.c.combine.pattern=/usr/local/bin/sdcc-ld -mmcs51 --model-small --iram-size 256 --xram-size 0 --code-size 16384 --out-fmt-ihx -o "{build.path}/{build.project_name}.ihx" {object_files} "{archive_file_path}"
+
+# Convert ihx -> bin using makebin (required by nvtispflash)
+recipe.objcopy.bin.pattern=/usr/bin/makebin -p -s 16384 "{build.path}/{build.project_name}.ihx" "{build.path}/{build.project_name}.bin"
+
+# Size reporting
+recipe.size.pattern=
+recipe.size.regex=
+recipe.size.regex.data=
+recipe.size.regex.eeprom=
+
+# Upload tool: nvtispflash
+# Defaults to /dev/ttyUSB0 — plug in board, press reset after running upload
+# DTR auto-reset works if RPD bit is set (run: nvtispflash -c rpd=1 once)
+tools.nvtispflash.upload.params.verbose=
+tools.nvtispflash.upload.params.quiet=
+tools.nvtispflash.upload.pattern=/usr/local/bin/nvtispflash -a "{build.path}/{build.project_name}.bin"

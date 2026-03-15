@@ -1,0 +1,9 @@
+#!/bin/bash
+# Archive .o file AND store its .lst companion inside the archive
+ARCHIVE="$1"
+OBJ="$2"
+LST="${OBJ%.o}.lst"
+
+/usr/bin/sdar -rc "$ARCHIVE" "$OBJ"
+# Also archive the .lst if it exists
+[[ -f "$LST" ]] && /usr/bin/sdar -rc "$ARCHIVE" "$LST"
