@@ -9,7 +9,7 @@ compiler.object_file_extension=rel
 compiler.ar_file_extension=lib
 
 # Compiler flags shared
-compiler.sdcc.flags=-mmcs51 --model-small --iram-size 256 --xram-size 0 --code-size 16384 --disable-warning 283 --disable-warning 126 --disable-warning 110
+compiler.sdcc.flags=-mmcs51 --model-small --iram-size 256 --xram-size 768 --code-size 18432 --disable-warning 283 --disable-warning 126
 
 # Compile C
 recipe.c.o.pattern="{compiler.path}{compiler.sdcc.cmd}" {compiler.sdcc.flags} -DF_CPU={build.f_cpu} -I{build.core.path} -I{build.variant.path} -x c -c "{source_file}" -o "{object_file}"
@@ -25,6 +25,11 @@ recipe.ar.pattern=/usr/local/bin/sdcc-ar "{archive_file_path}" "{object_file}"
 
 # Link using the collected .rel list
 recipe.c.combine.pattern=/usr/local/bin/sdcc-ld -mmcs51 --model-small --iram-size 256 --xram-size 0 --code-size 16384 --out-fmt-ihx -o "{build.path}/{build.project_name}.ihx" {object_files} "{archive_file_path}"
+
+# Size computation
+recipe.size.pattern=cat "{build.path}/{build.project_name}.mem"
+recipe.size.regex=^Stack\s+starts\s+at:\s+0x([0-9A-Fa-f]+).*
+recipe.size.regex.data=^Direct\s+internal\s+RAM\s+size:\s+(\d+)
 
 # Convert ihx -> bin using makebin (required by nvtispflash)
 recipe.objcopy.bin.pattern=/usr/bin/makebin -p -s 16384 "{build.path}/{build.project_name}.ihx" "{build.path}/{build.project_name}.bin"

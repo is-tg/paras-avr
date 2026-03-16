@@ -22,7 +22,7 @@ enum {
 };
 
 // TODO: move to pins_arduino.h
-#define NUM_DIGITAL_PINS 16
+#define NUM_DIGITAL_PINS 16 // +2 ?
 
 void setup(void);
 void loop(void);
