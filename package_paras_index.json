@@ -1,0 +1,101 @@
+{
+  "packages": [
+    {
+      "name": "paras",
+      "maintainer": "tg",
+      "websiteURL": "https://github.com/is-tg/paras-n76-core",
+      "email": "devgoattg@gmail.com",
+      "help": {
+        "online": "https://github.com/is-tg/paras-n76-core/issues"
+      },
+      "platforms": [
+        {
+          "name": "Paras N76E003 Core",
+          "architecture": "mcs51",
+          "version": "0.0.1",
+          "category": "Contributed",
+          "help": {
+            "online": "https://github.com/is-tg/paras-n76-core"
+          },
+          "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/paras-core.tar.xz",
+          "archiveFileName": "paras-core.tar.xz",
+          "checksum": "SHA-256:c83c8a3331b4dfd9fb490fb4cb1a4b7272f674008cb200689fa20e9177804027",
+          "size": "4524",
+          "boards": [
+            {
+              "name": "Nuvoton N76E003"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "paras",
+              "name": "sdcc",
+              "version": "4.5.0-custom"
+            },
+            {
+              "packager": "paras",
+              "name": "nvtispflash",
+              "version": "1.0.0"
+            }
+          ]
+        }
+      ],
+      "tools": [
+        {
+          "name": "sdcc",
+          "version": "4.5.0-custom",
+          "systems": [
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/sdcc-paras-linux-x64.tar.xz",
+              "archiveFileName": "sdcc-paras-linux-x64.tar.xz",
+              "checksum": "SHA-256:5cb705d88159e923dc127092e19fd42d7d581a6712f8d2c877c8ff3efb599768",
+              "size": "1654480"
+            },
+            {
+              "host": "x86_64-mingw32",
+              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/sdcc-paras-windows-x64.tar.xz",
+              "archiveFileName": "sdcc-paras-windows-x64.tar.xz",
+              "checksum": "SHA-256:3b083de6954deeb79b5ca748d553a54476912af489a96ecf3b3f626e91d75232",
+              "size": "2091408"
+            },
+            {
+              "host": "i686-mingw32",
+              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/sdcc-paras-windows-x64.tar.xz",
+              "archiveFileName": "sdcc-paras-windows-x64.tar.xz",
+              "checksum": "SHA-256:3b083de6954deeb79b5ca748d553a54476912af489a96ecf3b3f626e91d75232",
+              "size": "2091408"
+            }
+          ]
+        },
+        {
+          "name": "nvtispflash",
+          "version": "1.0.0",
+          "systems": [
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/nvtispflash-linux.tar.xz",
+              "archiveFileName": "nvtispflash-linux.tar.xz",
+              "checksum": "SHA-256:18d32ce319df7684481413a1251470b4f0f985ff771723e6eee9230e513ce360",
+              "size": "6320"
+            },
+            {
+              "host": "x86_64-mingw32",
+              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/nvtispflash-windows.tar.xz",
+              "archiveFileName": "nvtispflash-windows.tar.xz",
+              "checksum": "SHA-256:0b8aa67a1d89713e0ab9f9a5a0d217df3a2f91e693c7ff4029c1f8bfa60ebb3a",
+              "size": "46612"
+            },
+            {
+              "host": "i686-mingw32",
+              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/nvtispflash-windows.tar.xz",
+              "archiveFileName": "nvtispflash-windows.tar.xz",
+              "checksum": "SHA-256:0b8aa67a1d89713e0ab9f9a5a0d217df3a2f91e693c7ff4029c1f8bfa60ebb3a",
+              "size": "46612"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

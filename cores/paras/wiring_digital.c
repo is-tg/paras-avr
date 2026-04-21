@@ -1,7 +1,7 @@
 #include "Arduino.h"
 
-void pinMode(uint8_t pin, uint8_t mode) {
-  uint8_t bitmask = (1 << (pin & 7));
+void pinMode(byte pin, byte mode) {
+  byte bitmask = (1 << (pin & 7));
 
   // Port 0
   if (pin < 8) {
@@ -15,8 +15,8 @@ void pinMode(uint8_t pin, uint8_t mode) {
   }
 }
 
-void digitalWrite(uint8_t pin, uint8_t val) {
-  uint8_t bitmask = (1 << (pin & 7));
+void digitalWrite(byte pin, byte val) {
+  byte bitmask = (1 << (pin & 7));
 
   // Port 0
   if (pin < 8) {
@@ -34,8 +34,8 @@ void digitalWrite(uint8_t pin, uint8_t val) {
   }
 }
 
-int digitalRead(uint8_t pin) {
-  uint8_t bitmask = (1 << (pin & 7));
+int digitalRead(byte pin) {
+  byte bitmask = (1 << (pin & 7));
 
   // Port 0
   if (pin < 8) {
