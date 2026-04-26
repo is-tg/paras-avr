@@ -19,8 +19,8 @@
           },
           "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/paras-core.tar.xz",
           "archiveFileName": "paras-core.tar.xz",
-          "checksum": "SHA-256:c83c8a3331b4dfd9fb490fb4cb1a4b7272f674008cb200689fa20e9177804027",
-          "size": "4524",
+          "checksum": "SHA-256:2bd26f7eac256c4e1008931385c918df1cab7e7e9176d207e81d220a1eeb090f",
+          "size": "3920",
           "boards": [
             {
               "name": "Nuvoton N76E003"
