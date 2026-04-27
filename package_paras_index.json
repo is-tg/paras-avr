@@ -19,8 +19,8 @@
           },
           "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/paras-core.tar.xz",
           "archiveFileName": "paras-core.tar.xz",
-          "checksum": "SHA-256:2bd26f7eac256c4e1008931385c918df1cab7e7e9176d207e81d220a1eeb090f",
-          "size": "3920",
+          "checksum": "SHA-256:08766b57c71bfca1064ef26e3ab7af93c16e79bdf52096be58697a8d60883b2c",
+          "size": "3632",
           "boards": [
             {
               "name": "Nuvoton N76E003"
@@ -42,24 +42,10 @@
           "systems": [
             {
               "host": "x86_64-pc-linux-gnu",
-              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/tools-linux.tar.xz",
-              "archiveFileName": "tools-linux.tar.xz",
-              "checksum": "SHA-256:7d2c8ae28accb015d41f6b795b1fa6f9cace551ec4e21372cdc696afc4f2bb74",
-              "size": "1709492"
-            },
-            {
-              "host": "x86_64-mingw32",
-              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/tools-windows.tar.xz",
-              "archiveFileName": "tools-windows.tar.xz",
-              "checksum": "SHA-256:7ef79c419f4c93f6fde5a42415e6b9038d78ed4912c2c773bf1fb7f979e89f79",
-              "size": "2161684"
-            },
-            {
-              "host": "i686-mingw32",
-              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/tools-windows.tar.xz",
-              "archiveFileName": "tools-windows.tar.xz",
-              "checksum": "SHA-256:7ef79c419f4c93f6fde5a42415e6b9038d78ed4912c2c773bf1fb7f979e89f79",
-              "size": "2161684"
+              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/linux-bundle.tar.xz",
+              "archiveFileName": "linux-bundle.tar.xz",
+              "checksum": "SHA-256:0113564136e31de0da97e7e4cd85dd91f71b614b47a1c7febec6deb8a52bcf59",
+              "size": "1369244"
             }
           ]
         }
