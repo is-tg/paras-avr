@@ -3,7 +3,7 @@ name=Paras 8051 Boards
 version=0.0.1
 
 ## Define base SDCC path to cure ugliness
-sdcc.path={runtime.tools.bundle.path}
+sdcc.path={runtime.tools.bundle.path}/sdcc
 
 ## Compiler
 compiler.sdcc.cmd=sdcc
