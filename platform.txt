@@ -2,17 +2,14 @@
 name=Paras 8051 Boards
 version=0.0.1
 
-## Define base SDCC path to cure ugliness
-sdcc.path={runtime.tools.bundle.path}/sdcc
-
 ## Compiler
 compiler.sdcc.cmd=sdcc
 compiler.sdcc.cmd.windows=sdcc.exe
 
 ## Define paths
-compiler.path={sdcc.path}/bin
-compiler.lib.path={sdcc.path}/share/sdcc/lib/{build.model}
-compiler.system.includes=-I"{sdcc.path}/share/sdcc/include/{build.mcu}" -I"{sdcc.path}/share/sdcc/include"
+compiler.path={runtime.tools.bundle.path}/bin
+compiler.lib.path={runtime.tools.bundle.path}/share/sdcc/lib/{build.model}
+compiler.system.includes=-I"{runtime.tools.bundle.path}/share/sdcc/include/{build.mcu}" -I"{runtime.tools.bundle.path}/share/sdcc/include"
 
 ## Suppress annoying SDCC warnings (283: no prototype, 126: unreachable code)
 compiler.warning.flags=--disable-warning 283 --disable-warning 126
