@@ -19,7 +19,7 @@
           },
           "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/paras-core.tar.xz",
           "archiveFileName": "paras-core.tar.xz",
-          "checksum": "SHA-256:9aa71be054b79f5cf1deb2db23301711763773e61ca821a90c55024263ca1c8a",
+          "checksum": "SHA-256:7ae2a2fb452281da32b668973f001482dabd6a39b09f441823c72b8a5b6f6698",
           "size": 3648,
           "boards": [
             {
