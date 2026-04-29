@@ -20,6 +20,8 @@ enum {
 };
 
 #define NUM_DIGITAL_PINS 16 // +2 ?
+// Active low LED
+#define LED_BUILTIN 10
 
 void setup(void);
 void loop(void);
