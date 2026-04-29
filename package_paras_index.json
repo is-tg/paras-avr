@@ -17,7 +17,7 @@
           "help": {
             "online": "https://github.com/is-tg/paras-n76-core"
           },
-          "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/paras-core.tar.xz",
+          "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.1.0/paras-core.tar.xz",
           "archiveFileName": "paras-core.tar.xz",
           "checksum": "SHA-256:7ae2a2fb452281da32b668973f001482dabd6a39b09f441823c72b8a5b6f6698",
           "size": 3648,
@@ -42,7 +42,7 @@
           "systems": [
             {
               "host": "x86_64-pc-linux-gnu",
-              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.0.1-pre/linux-bundle.tar.xz",
+              "url": "https://github.com/is-tg/paras-n76-core/releases/download/v0.1.0/linux-bundle.tar.xz",
               "archiveFileName": "linux-bundle.tar.xz",
               "checksum": "SHA-256:0113564136e31de0da97e7e4cd85dd91f71b614b47a1c7febec6deb8a52bcf59",
               "size": 1369244
