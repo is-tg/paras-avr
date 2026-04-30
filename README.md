@@ -72,3 +72,4 @@ resources:
 
 - [N76E003 Datasheet](https://www.nuvoton.com/export/resource-files/DS_N76E003_EN_Rev1.09.pdf)
 - [The Official Arduino AVR core for reference](https://github.com/arduino/ArduinoCore-avr/tree/master)
+- [Hardware independent layer of the Arduino cores defining the official API](https://github.com/arduino/ArduinoCore-API.git)
