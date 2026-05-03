@@ -32,15 +32,18 @@ echo SHA-256:$hash >.bumper/hash
 set bytes (string trim (wc -c < ar/n76e003-core.tar.xz))
 echo $bytes >.bumper/size
 
-# create new release
-gh release create "v$newver" ar/n76e003-core.tar.xz /home/tg/Documents/sdcc-patched/sdcc-install/opt/linux-bundle.tar.xz \
-    --title $newver \
-    --generate-notes
-
 # update index
 cd .bumper
 /home/tg/Documents/bumper/bin/bumper
 diff ../package_nuvoton_index.json draft.json
 if read_confirm
     cp draft.json ../package_nuvoton_index.json
+else
+    exit
 end
+
+# create new release
+cd ..
+gh release create "v$newver" ar/n76e003-core.tar.xz /home/tg/Documents/sdcc-patched/sdcc-install/opt/linux-bundle.tar.xz \
+    --title $newver \
+    --generate-notes
