@@ -7,12 +7,12 @@ share.path={runtime.tools.bundle.path}/share/sdcc
 lib.path={share.path}/lib/{build.model}
 
 ## Compiler
-compiler.system.includes=-I"{share.path}/include/{build.mcu}" -I"{share.path}/include"
+compiler.system.includes=-I"{share.path}/include/{build.arch}" -I"{share.path}/include"
 compiler.sdcc.cmd=sdcc
 compiler.sdcc.cmd.windows=sdcc.exe
 
 ## Global compiler flags
-compiler.sdcc.flags=-m{build.mcu} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -DF_CPU={build.f_cpu} {compiler.system.includes}
+compiler.sdcc.flags=-m{build.arch} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -DF_CPU={build.f_cpu} {compiler.system.includes}
 
 ## Compile C to object/rel files
 recipe.c.o.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -c "{source_file}" -o "{object_file}"
@@ -29,7 +29,7 @@ compiler.ar.cmd=echo
 recipe.ar.pattern="{compiler.ar.cmd}" "Skipping archive for {object_file}"
 
 ## Link using collected .rel object files
-recipe.c.combine.pattern="{bin.path}/{compiler.sdcc.cmd}" -m{build.mcu} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -L{lib.path} --out-fmt-ihx "{build.path}/core/main.c.o" "{build.path}/core/wiring.c.o" "{build.path}/core/wiring_digital.c.o" {object_files} -o "{build.path}/{build.project_name}.ihx"
+recipe.c.combine.pattern="{bin.path}/{compiler.sdcc.cmd}" -m{build.arch} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -L{lib.path} --out-fmt-ihx "{build.path}/core/main.c.o" "{build.path}/core/wiring.c.o" "{build.path}/core/wiring_digital.c.o" {object_files} -o "{build.path}/{build.project_name}.ihx"
 
 ## Convert ihx -> bin
 compiler.objcopy.cmd=sdobjcopy
