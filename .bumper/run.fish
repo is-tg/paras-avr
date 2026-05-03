@@ -22,7 +22,7 @@ end
 cd ..
 cp -r cores/ boards.txt platform.txt ar/mcs51/
 rm ar/mcs51/cores/n76e003/.clang*
-tar -cJf ar/n76e003-core.tar.xz ar/mcs51/
+tar -cJf ar/n76e003-core.tar.xz -C ar mcs51/
 
 # set bumper data
 set newver $argv[1]
@@ -33,7 +33,9 @@ set bytes (string trim (wc -c < ar/n76e003-core.tar.xz))
 echo $bytes >.bumper/size
 
 # create new release
-gh release create $newver ar/n76e003-core.tar.xz /home/tg/Documents/sdcc-patched/sdcc-install/opt/linux-bundle.tar.xz
+gh release create $newver ar/n76e003-core.tar.xz /home/tg/Documents/sdcc-patched/sdcc-install/opt/linux-bundle.tar.xz \
+    --title $newver \
+    --generate-notes
 
 # update index
 cd .bumper
