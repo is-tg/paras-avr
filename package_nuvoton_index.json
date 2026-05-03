@@ -44,8 +44,8 @@
                             "host": "x86_64-pc-linux-gnu",
                             "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.2.5/linux-bundle.tar.xz",
                             "archiveFileName": "linux-bundle.tar.xz",
-                            "checksum": "SHA-256:0113564136e31de0da97e7e4cd85dd91f71b614b47a1c7febec6deb8a52bcf59",
-                            "size": 1369244
+                            "checksum": "SHA-256:3630f3a4d2adcea954b01f7a479635a835752de71aa448fcc168936a673e177b",
+                            "size": 1369580
                         }
                     ]
                 }
