@@ -1,3 +1,4 @@
+### Made possible through sleepless nights
 ## Metadata
 name=Nuvoton N76E003
 version=0.1.0
@@ -17,11 +18,11 @@ tools.nvtispflash.cmd=nvtispflash
 tools.nvtispflash.cmd.windows=nvtispflash.exe
 
 ## Global compiler flags
-## Patch: SDCC now accepts .o as .rel and .a as .lib
-compiler.sdcc.flags=-m{build.arch} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -DF_CPU={build.f_cpu} -I"{device.path}/include/{build.arch}" -I"{device.path}/include" --disable-warning 283 --disable-warning 126
+## Patch: SDCC accepts .o as .rel and .a as .lib
+compiler.sdcc.flags=-mmcs51 --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -DF_CPU={build.f_cpu} -I"{device.path}/include/mcs51" -I"{device.path}/include" --disable-warning 283 --disable-warning 126
 
 ## Linker flags (reused in combine)
-compiler.sdcc.ld.flags=-m{build.arch} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -L"{device.path}/lib/{build.model}" --out-fmt-ihx
+compiler.sdcc.ld.flags=-mmcs51 --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -L"{device.path}/lib/{build.model}" --out-fmt-ihx
 
 ## Compile C
 recipe.c.o.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -c "{source_file}" -o "{object_file}"
@@ -34,12 +35,11 @@ recipe.preproc.includes.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.
 recipe.preproc.macros.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -x c -E "{source_file}"
 
 ## Archive core into core.a
-## Patch: sdar .a archive is accepted directly by patched SDCC linker
 recipe.ar.pattern="{bin.path}/{compiler.ar.cmd}" -rc "{archive_file_path}" "{object_file}"
 
 ## Link
-## Patch: {object_files} (.o) and {archive_file_path} (.a) passed directly — no wrappers!
-recipe.c.combine.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.ld.flags} "{archive_file_path}" {object_files} -o "{build.path}/{build.project_name}.ihx"
+## Explicitly pass main.c.o so SDCC sees main() and generates startup code
+recipe.c.combine.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.ld.flags} "{build.path}/core/main.c.o" {object_files} "{archive_file_path}" -o "{build.path}/{build.project_name}.ihx"
 
 ## Convert ihx → bin
 compiler.objcopy.bin.flags=-I ihex -O binary
