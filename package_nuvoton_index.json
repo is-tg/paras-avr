@@ -12,15 +12,15 @@
                 {
                     "name": "Nuvoton N76E003 Core",
                     "architecture": "mcs51",
-                    "version": "v0.2.1",
+                    "version": "v0.2.0",
                     "category": "Contributed",
                     "help": {
                         "online": "https://github.com/is-tg/n76e003-core"
                     },
-                    "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.2.1/n76e003-core.tar.xz",
+                    "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.2.0/n76e003-core.tar.xz",
                     "archiveFileName": "n76e003-core.tar.xz",
-                    "checksum": "SHA-256:50e9898a18175c240acb5fe35b0227930a6ed94b8e680861a3237f1d3da37962",
-                    "size": 3504,
+                    "checksum": "SHA-256:4141355c0e4b8998e338a56ca1e3f40a9ba52dd8e1852b5bd54e798d87abc17e",
+                    "size": 3676,
                     "boards": [
                         {
                             "name": "Nuvoton N76E003"
