@@ -12,15 +12,15 @@
                 {
                     "name": "Nuvoton N76E003 Core",
                     "architecture": "mcs51",
-                    "version": "0.2.1",
+                    "version": "0.2.5",
                     "category": "Contributed",
                     "help": {
                         "online": "https://github.com/is-tg/n76e003-core"
                     },
-                    "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.2.1/n76e003-core.tar.xz",
+                    "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.2.5/n76e003-core.tar.xz",
                     "archiveFileName": "n76e003-core.tar.xz",
-                    "checksum": "SHA-256:383244ac6a891336d313fe3c4c86f1208b22cc949a512686f600df06c85463e6",
-                    "size": 3676,
+                    "checksum": "SHA-256:d9a83a62600fffa1c173c28ff81d06d76fe9aeca4679d7d3b76a3fd825f97900",
+                    "size": 3668,
                     "boards": [
                         {
                             "name": "Nuvoton N76E003"
@@ -42,7 +42,7 @@
                     "systems": [
                         {
                             "host": "x86_64-pc-linux-gnu",
-                            "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.2.1/linux-bundle.tar.xz",
+                            "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.2.5/linux-bundle.tar.xz",
                             "archiveFileName": "linux-bundle.tar.xz",
                             "checksum": "SHA-256:0113564136e31de0da97e7e4cd85dd91f71b614b47a1c7febec6deb8a52bcf59",
                             "size": 1369244

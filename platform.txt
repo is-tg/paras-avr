@@ -18,18 +18,10 @@ tools.nvtispflash.cmd.windows=nvtispflash.exe
 
 ## Global compiler flags
 ## Patch: SDCC now accepts .o as .rel and .a as .lib
-compiler.sdcc.flags=-m{build.arch} --model-{build.model} \
-  --iram-size 256 --xram-size 768 --code-size 18432 \
-  -DF_CPU={build.f_cpu} \
-  -I"{device.path}/include/{build.arch}" \
-  -I"{device.path}/include" \
-  --disable-warning 283 --disable-warning 126
+compiler.sdcc.flags=-m{build.arch} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -DF_CPU={build.f_cpu} -I"{device.path}/include/{build.arch}" -I"{device.path}/include" --disable-warning 283 --disable-warning 126
 
 ## Linker flags (reused in combine)
-compiler.sdcc.ld.flags=-m{build.arch} --model-{build.model} \
-  --iram-size 256 --xram-size 768 --code-size 18432 \
-  -L"{device.path}/lib/{build.model}" \
-  --out-fmt-ihx
+compiler.sdcc.ld.flags=-m{build.arch} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -L"{device.path}/lib/{build.model}" --out-fmt-ihx
 
 ## Compile C
 recipe.c.o.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -c "{source_file}" -o "{object_file}"
