@@ -33,7 +33,7 @@ set bytes (string trim (wc -c < ar/n76e003-core.tar.xz))
 echo $bytes >.bumper/size
 
 # create new release
-gh release create $newver ar/n76e003-core.tar.xz /home/tg/Documents/sdcc-patched/sdcc-install/opt/linux-bundle.tar.xz \
+gh release create "v$newver" ar/n76e003-core.tar.xz /home/tg/Documents/sdcc-patched/sdcc-install/opt/linux-bundle.tar.xz \
     --title $newver \
     --generate-notes
 

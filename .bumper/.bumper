@@ -7,6 +7,6 @@ packages.0.name echo nuvoton
 # write to draft #
 #../package_nuvoton_index.json draft.json
 packages.0.platforms.0.version cat newver
-packages.0.platforms.0.url echo https://github.com/is-tg/n76e003-core/releases/download/$(cat newver)/n76e003-core.tar.xz
+packages.0.platforms.0.url echo https://github.com/is-tg/n76e003-core/releases/download/v$(cat newver)/n76e003-core.tar.xz
 packages.0.platforms.0.checksum cat hash
 packages.0.platforms.0.size cat size
