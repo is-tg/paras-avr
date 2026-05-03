@@ -2,42 +2,64 @@
 name=Nuvoton N76E003
 version=0.1.0
 
+## Tool paths
 bin.path={runtime.tools.bundle.path}/bin
-share.path={runtime.tools.bundle.path}/share/sdcc
-lib.path={share.path}/lib/{build.model}
+device.path={runtime.tools.bundle.path}/device
 
 ## Compiler
-compiler.system.includes=-I"{share.path}/include/{build.arch}" -I"{share.path}/include"
 compiler.sdcc.cmd=sdcc
 compiler.sdcc.cmd.windows=sdcc.exe
-
-## Global compiler flags
-compiler.sdcc.flags=-m{build.arch} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -DF_CPU={build.f_cpu} {compiler.system.includes}
-
-## Compile C to object/rel files
-recipe.c.o.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -c "{source_file}" -o "{object_file}"
-
-## Sketch .ino becomes .cpp & force SDCC to treat as C
-recipe.cpp.o.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -x c -c "{source_file}" -o "{object_file}"
-
-## Force Arduino to use SDCC for dependency generation (Added -x c here too)
-recipe.preproc.includes.pattern="{bin.path}/{compiler.sdcc.cmd}" -E -x c {compiler.sdcc.flags} {includes} "{source_file}"
-recipe.preproc.macros.pattern="{bin.path}/{compiler.sdcc.cmd}" -E -x c {compiler.sdcc.flags} {includes} "{source_file}"
-
-## Annoyance
-compiler.ar.cmd=echo
-recipe.ar.pattern="{compiler.ar.cmd}" "Skipping archive for {object_file}"
-
-## Link using collected .rel object files
-recipe.c.combine.pattern="{bin.path}/{compiler.sdcc.cmd}" -m{build.arch} --model-{build.model} --iram-size 256 --xram-size 768 --code-size 18432 -L{lib.path} --out-fmt-ihx "{build.path}/core/main.c.o" "{build.path}/core/wiring.c.o" "{build.path}/core/wiring_digital.c.o" {object_files} -o "{build.path}/{build.project_name}.ihx"
-
-## Convert ihx -> bin
+compiler.ar.cmd=sdar
+compiler.ar.cmd.windows=sdar.exe
 compiler.objcopy.cmd=sdobjcopy
 compiler.objcopy.cmd.windows=sdobjcopy.exe
-compiler.objcopy.bin.flags=-I ihex -O binary 
-recipe.objcopy.bin.pattern="{bin.path}/{compiler.objcopy.cmd}" {compiler.objcopy.bin.flags} "{build.path}/{build.project_name}.ihx" "{build.path}/{build.project_name}.bin"
-
-## Flash
 tools.nvtispflash.cmd=nvtispflash
 tools.nvtispflash.cmd.windows=nvtispflash.exe
+
+## Global compiler flags
+## Patch: SDCC now accepts .o as .rel and .a as .lib
+compiler.sdcc.flags=-m{build.arch} --model-{build.model} \
+  --iram-size 256 --xram-size 768 --code-size 18432 \
+  -DF_CPU={build.f_cpu} \
+  -I"{device.path}/include/{build.arch}" \
+  -I"{device.path}/include" \
+  --disable-warning 283 --disable-warning 126
+
+## Linker flags (reused in combine)
+compiler.sdcc.ld.flags=-m{build.arch} --model-{build.model} \
+  --iram-size 256 --xram-size 768 --code-size 18432 \
+  -L"{device.path}/lib/{build.model}" \
+  --out-fmt-ihx
+
+## Compile C
+recipe.c.o.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -c "{source_file}" -o "{object_file}"
+
+## Compile sketch (.ino → .cpp, forced as C)
+recipe.cpp.o.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -x c -c "{source_file}" -o "{object_file}"
+
+## Preprocess (for library detection)
+recipe.preproc.includes.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -x c -E "{source_file}"
+recipe.preproc.macros.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.flags} {includes} -x c -E "{source_file}"
+
+## Archive core into core.a
+## Patch: sdar .a archive is accepted directly by patched SDCC linker
+recipe.ar.pattern="{bin.path}/{compiler.ar.cmd}" -rc "{archive_file_path}" "{object_file}"
+
+## Link
+## Patch: {object_files} (.o) and {archive_file_path} (.a) passed directly — no wrappers!
+recipe.c.combine.pattern="{bin.path}/{compiler.sdcc.cmd}" {compiler.sdcc.ld.flags} "{archive_file_path}" {object_files} -o "{build.path}/{build.project_name}.ihx"
+
+## Convert ihx → bin
+compiler.objcopy.bin.flags=-I ihex -O binary
+recipe.objcopy.bin.pattern="{bin.path}/{compiler.objcopy.cmd}" {compiler.objcopy.bin.flags} "{build.path}/{build.project_name}.ihx" "{build.path}/{build.project_name}.bin"
+
+## Size (optional, reads from SDCC .mem file)
+recipe.size.pattern=
+recipe.size.regex=
+recipe.size.regex.data=
+recipe.size.regex.eeprom=
+
+## Upload
+tools.nvtispflash.upload.params.verbose=
+tools.nvtispflash.upload.params.quiet=
 tools.nvtispflash.upload.pattern="{bin.path}/{tools.nvtispflash.cmd}" --serial-device "{serial.port}" --aprom-file "{build.path}/{build.project_name}.bin"
