@@ -7,3 +7,4 @@ n76e003.build.model=small
 n76e003.build.arch=mcs51
 
 n76e003.upload.tool=nvtispflash
+n76e003.upload.protocol=serial
