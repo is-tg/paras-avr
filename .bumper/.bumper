@@ -10,3 +10,4 @@ packages.0.platforms.0.version cat newver
 packages.0.platforms.0.url echo https://github.com/is-tg/n76e003-core/releases/download/v$(cat newver)/n76e003-core.tar.xz
 packages.0.platforms.0.checksum cat hash
 packages.0.platforms.0.size cat size
+packages.0.tools.0.systems.0.url https://github.com/is-tg/n76e003-core/releases/download/v$(cat newver)/linux-bundle.tar.xz

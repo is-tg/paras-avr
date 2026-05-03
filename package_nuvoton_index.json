@@ -42,7 +42,7 @@
                     "systems": [
                         {
                             "host": "x86_64-pc-linux-gnu",
-                            "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.2.0/linux-bundle.tar.xz",
+                            "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.2.1/linux-bundle.tar.xz",
                             "archiveFileName": "linux-bundle.tar.xz",
                             "checksum": "SHA-256:0113564136e31de0da97e7e4cd85dd91f71b614b47a1c7febec6deb8a52bcf59",
                             "size": 1369244
