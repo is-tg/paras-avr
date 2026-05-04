@@ -43,7 +43,6 @@ else
 end
 
 # create new release
-cd ..
-gh release create "v$newver" ar/n76e003-core.tar.xz /home/tg/Documents/sdcc-patched/sdcc-install/opt/linux-bundle.tar.xz \
+gh release create "v$newver" /home/tg/Documents/mcs51/ar/n76e003-core.tar.xz /home/tg/Documents/mcs51/ar/tools-bundle.tar.xz \
     --title $newver \
     --generate-notes
