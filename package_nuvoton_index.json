@@ -12,15 +12,15 @@
                 {
                     "name": "Nuvoton N76E003 Core",
                     "architecture": "mcs51",
-                    "version": "0.3.0",
+                    "version": "0.4.2",
                     "category": "Contributed",
                     "help": {
                         "online": "https://github.com/is-tg/n76e003-core"
                     },
-                    "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.3.0/n76e003-core.tar.xz",
+                    "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.4.2/n76e003-core.tar.xz",
                     "archiveFileName": "n76e003-core.tar.xz",
-                    "checksum": "SHA-256:a3f4820da32d06865ce6317a8103b2567c2b90298b3d56f026ee61c92914ea92",
-                    "size": 3676,
+                    "checksum": "SHA-256:ca56b74ad934554205366f273b282c985e27dd31ecd5d16a2d6883fb8fdb5199",
+                    "size": 3672,
                     "boards": [
                         {
                             "name": "Nuvoton N76E003"
@@ -30,7 +30,7 @@
                         {
                             "packager": "nuvoton",
                             "name": "bundle",
-                            "version": "1.0.0"
+                            "version": "2.0.0"
                         }
                     ]
                 }
@@ -38,14 +38,28 @@
             "tools": [
                 {
                     "name": "bundle",
-                    "version": "1.0.0",
+                    "version": "2.0.0",
                     "systems": [
                         {
                             "host": "x86_64-pc-linux-gnu",
-                            "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.3.0/linux-bundle.tar.xz",
-                            "archiveFileName": "linux-bundle.tar.xz",
-                            "checksum": "SHA-256:3630f3a4d2adcea954b01f7a479635a835752de71aa448fcc168936a673e177b",
-                            "size": 1369580
+                            "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.4.2/linux-bundle.tar.xz",
+                            "archiveFileName": "tools-bundle.tar.xz",
+                            "checksum": "SHA-256:d270e69b23f3442287df2ccf12e504a66a29ec4d361aa8ea562b43b18bbdb718",
+                            "size": 8330140
+                        },
+                        {
+                            "host": "x86_64-mingw32",
+                            "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.4.2/linux-bundle.tar.xz",
+                            "archiveFileName": "tools-bundle.tar.xz",
+                            "checksum": "SHA-256:d270e69b23f3442287df2ccf12e504a66a29ec4d361aa8ea562b43b18bbdb718",
+                            "size": 8330140
+                        },
+                        {
+                            "host": "i686-mingw32",
+                            "url": "https://github.com/is-tg/n76e003-core/releases/download/v0.4.2/linux-bundle.tar.xz",
+                            "archiveFileName": "tools-bundle.tar.xz",
+                            "checksum": "SHA-256:d270e69b23f3442287df2ccf12e504a66a29ec4d361aa8ea562b43b18bbdb718",
+                            "size": 8330140
                         }
                     ]
                 }
