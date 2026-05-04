@@ -31,6 +31,10 @@ set hash (string split ' ' (sha256sum ar/n76e003-core.tar.xz))[1]
 echo SHA-256:$hash >.bumper/hash
 set bytes (string trim (wc -c < ar/n76e003-core.tar.xz))
 echo $bytes >.bumper/size
+set hash (string split ' ' (sha256sum ar/tools-bundle.tar.xz))[1]
+echo SHA-256:$hash >.bumper/tbhash
+set bytes (string trim (wc -c < ar/tools-bundle.tar.xz))
+echo $bytes >.bumper/tbsize
 
 # update index
 cd .bumper
