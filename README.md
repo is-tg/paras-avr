@@ -66,8 +66,6 @@ Refer the [Arduino API](https://docs.arduino.cc/learn/programming/reference/)
 
 ## CONTRIBUTE
 
-[Need windows support!](https://github.com/is-tg/n76e003-core/issues/1)
-
 resources:
 
 - [N76E003 Datasheet](https://www.nuvoton.com/export/resource-files/DS_N76E003_EN_Rev1.09.pdf)
